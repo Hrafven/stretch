@@ -1,3 +1,1 @@
-# Stretch - A python app to get notifications for breaks
-
-## Work in progress
+# Stretch - A web application to remind you to take breaks and correct your posture
