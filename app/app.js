@@ -1,5 +1,15 @@
 var currentAnimationsCounter = [];
 
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/stretch/sw.js', { scope: '/stretch/' }).then(function(reg) {
+        // registration worked
+        console.log('Registration succeeded. Scope is ' + reg.scope);
+    }).catch(function(error) {
+        // registration failed
+        console.log('Registration failed with ' + error);
+    });
+};
+
 const stretchTitle = document.getElementById('stretch');
 stretchTitle.addEventListener('animationend', function() {
     if (currentAnimationsCounter.includes('animatedActive')) {
