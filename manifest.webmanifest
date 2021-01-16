@@ -4,7 +4,7 @@
     "lang": "en",
     "description": "A web application to remind you to take breaks and correct your posture",
     "scope": "/stretch/",
-    "start_url": "/stretch/index.html",
+    "start_url": "/stretch/index.amp.html",
     "background_color": "#ffffff",
     "theme_color": "#7866a4",
     "dir": "ltr",
