@@ -2,10 +2,10 @@ this.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open('v1').then(function(cache) {
             return cache.addAll([
-                '/stretch/app/',
-                '/stretch/app/index.html',
-                '/stretch/app/style.css',
-                '/stretch/app/app.js',
+                '/stretch/',
+                '/stretch/index.html',
+                '/stretch/style.css',
+                '/stretch/app.js',
                 '/stretch/icon/',
                 '/stretch/icon/android-icon-192x192.png',
                 '/stretch/icon/apple-icon-57x57.png',
