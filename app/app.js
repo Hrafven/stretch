@@ -1,7 +1,7 @@
 var currentAnimationsCounter = [];
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/stretch/sw.js', { scope: '/stretch/' }).then(function(reg) {
+    navigator.serviceWorker.register('/stretch/sw.js').then(function(reg) {
         // registration worked
         console.log('Registration succeeded. Scope is ' + reg.scope);
     }).catch(function(error) {
