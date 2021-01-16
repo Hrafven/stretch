@@ -2,25 +2,25 @@ this.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open('v1').then(function(cache) {
             return cache.addAll([
-                '/stretch/',
-                '/stretch/index.html',
-                '/stretch/style.css',
-                '/stretch/app.js',
-                '/stretch/icon/',
-                '/stretch/icon/android-icon-192x192.png',
-                '/stretch/icon/apple-icon-57x57.png',
-                '/stretch/icon/apple-icon-60x60.png',
-                '/stretch/icon/apple-icon-72x72.png',
-                '/stretch/icon/apple-icon-76x76.png',
-                '/stretch/icon/apple-icon-114x114.png',
-                '/stretch/icon/apple-icon-120x120.png',
-                '/stretch/icon/apple-icon-144x144.png',
-                '/stretch/icon/apple-icon-152x152.png',
-                '/stretch/icon/apple-icon-180x180.png',
-                '/stretch/icon/favicon-16x16.png',
-                '/stretch/icon/favicon-32x32.png',
-                '/stretch/icon/favicon-96x96.png',
-                '/stretch/manifest.webmanifest'
+                '/',
+                '/index.html',
+                '/style.css',
+                '/app.js',
+                '/icon/',
+                '/icon/android-icon-192x192.png',
+                '/icon/apple-icon-57x57.png',
+                '/icon/apple-icon-60x60.png',
+                '/icon/apple-icon-72x72.png',
+                '/icon/apple-icon-76x76.png',
+                '/icon/apple-icon-114x114.png',
+                '/icon/apple-icon-120x120.png',
+                '/icon/apple-icon-144x144.png',
+                '/icon/apple-icon-152x152.png',
+                '/icon/apple-icon-180x180.png',
+                '/icon/favicon-16x16.png',
+                '/icon/favicon-32x32.png',
+                '/icon/favicon-96x96.png',
+                '/manifest.webmanifest'
             ]);
         })
     );
@@ -37,6 +37,6 @@ this.addEventListener('fetch', function(event) {
         });
         return response.clone();
     }).catch(function() {
-        return caches.match('/stretch/index.html');
+        return caches.match('/index.html');
     }));
 });
