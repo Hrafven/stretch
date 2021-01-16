@@ -18,6 +18,8 @@ this.addEventListener('install', function(event) {
                 'icon/favicon-16x16.png',
                 'icon/favicon-32x32.png',
                 'icon/favicon-96x96.png',
+                'icon/maskable_icon.png',
+                'splash.png',
                 'manifest.webmanifest',
                 'https://fonts.googleapis.com/css2?family=Rubik&display=swap'
             ]);
