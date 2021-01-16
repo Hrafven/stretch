@@ -21,7 +21,7 @@ this.addEventListener('install', function(event) {
                 'icon/maskable_icon.png',
                 'icon/splash.png',
                 'manifest.webmanifest',
-                'http://fontlibrary.org/face/now-alt'
+                'https://fontlibrary.org/face/now-alt'
             ]);
         })
     );
