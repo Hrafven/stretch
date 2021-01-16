@@ -1,0 +1,156 @@
+<!doctype html>
+<html ⚡ lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="edge">
+    <meta name="description" content="A web application to remind you to take breaks and correct your posture">
+    <meta name="theme-color" content="#7866A4">
+    <link rel="canonical" href="https://hrafven.github.io/index.html">
+    <link rel="apple-touch-icon" href="icon/apple-icon-180x180.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icon/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" href="icon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="icon/favicon-96x96.png" sizes="96x96">
+    <title>stretch - Break and Posture Reminder</title>
+    <style amp-boilerplate>
+        body {
+            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1, end) 0s 1 normal both
+        }
+        
+        @-webkit-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+            to {
+                visibility: visible
+            }
+        }
+        
+        @-moz-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+            to {
+                visibility: visible
+            }
+        }
+        
+        @-ms-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+            to {
+                visibility: visible
+            }
+        }
+        
+        @-o-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+            to {
+                visibility: visible
+            }
+        }
+        
+        @keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+            to {
+                visibility: visible
+            }
+        }
+    </style>
+    <noscript>
+        <style amp-boilerplate>
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none
+            }
+        </style>
+    </noscript>
+    <style amp-custom>
+        .stretch {
+            margin: 0;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 10vw;
+            display: inline;
+            background: #009FFF;
+            background: -webkit-linear-gradient(to right, #ec2F4B, #009FFF, #ec2F4B);
+            background: linear-gradient(to right, #ec2F4B, #009FFF, #ec2F4B);
+            background-clip: text;
+            -moz-background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-position: 0%;
+            background-size: 200% auto;
+            border: none;
+        }
+        
+        .stretch.animatedHover {
+            animation: textShine 1.5s ease-in-out;
+        }
+        
+        .stretch.animatedActive {
+            animation: rubberBand 1.5s, textShine 1.5s ease-in-out;
+        }
+        
+        @keyframes textShine {
+            to {
+                background-position: 200%;
+            }
+        }
+        
+        @keyframes rubberBand {
+            0% {
+                -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+            }
+            30% {
+                -webkit-transform: scale3d(1.25, 0.75, 1);
+                transform: scale3d(1.25, 0.75, 1);
+            }
+            40% {
+                -webkit-transform: scale3d(0.75, 1.25, 1);
+                transform: scale3d(0.75, 1.25, 1);
+            }
+            100% {
+                -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+            }
+        }
+    </style>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
+    <script async custom-element="amp-install-serviceworker" src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script>
+</head>
+
+<body>
+    <div style="height: 100vh; width: 100vw;display: flex;justify-content: center;align-items: center;background-color: white;">
+        <h1><button id="stretch" class="stretch">stretch</button></h1>
+    </div>
+    <amp-script layout="container" script="app" class="customjs">
+    </amp-script>
+    <script id="app" type="text/plain" target="amp-script">
+        var currentAnimationsCounter = []; if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/stretch/sw.js', { scope: '/stretch/' }).then(function(reg) { // registration worked console.log('Registration succeeded. Scope is ' + reg.scope);
+        }).catch(function(error) { // registration failed console.log('Registration failed with ' + error); }); }; const stretchTitle = document.getElementById('stretch'); stretchTitle.addEventListener('animationend', function() { if (currentAnimationsCounter.includes('animatedActive'))
+        { currentAnimationsCounter[currentAnimationsCounter.indexOf('animatedActive')] = undefined; stretchTitle.classList.remove('animatedActive'); } if (currentAnimationsCounter.includes('animatedHover')) { currentAnimationsCounter[currentAnimationsCounter.indexOf('animatedHover')]
+        = undefined; stretchTitle.classList.remove('animatedHover'); } }); stretchTitle.addEventListener('mousedown', function() { if (!currentAnimationsCounter.includes('animatedActive')) { currentAnimationsCounter.push('animatedActive'); stretchTitle.classList.add('animatedActive')
+        } }) stretchTitle.addEventListener('mouseenter', function() { if (!currentAnimationsCounter.includes('animatedHover')) { currentAnimationsCounter.push('animatedHover'); stretchTitle.classList.add('animatedHover') } })
+    </script>
+    <amp-install-serviceworker src="sw.js" layout="nodisplay">
+    </amp-install-serviceworker>
+</body>
+
+</html>
