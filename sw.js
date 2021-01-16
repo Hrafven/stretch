@@ -20,7 +20,8 @@ this.addEventListener('install', function(event) {
                 'icon/favicon-96x96.png',
                 'icon/maskable_icon.png',
                 'icon/splash.png',
-                'manifest.webmanifest'
+                'manifest.webmanifest',
+                'http://fontlibrary.org/face/now-alt'
             ]);
         })
     );
