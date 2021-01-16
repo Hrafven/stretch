@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="edge">
     <meta name="description" content="A web application to remind you to take breaks and correct your posture">
     <meta name="theme-color" content="#7866A4">
+    <meta name="amp-script-src" content="sha384-4NEgT47CeQTGgy69hH6Anl69G7cap5RV_RvPMZn0SszatHjidFver_HYhiOH0yzu">
     <link rel="canonical" href="https://hrafven.github.io/index.html">
     <link rel="apple-touch-icon" href="icon/apple-icon-180x180.png">
     <link rel="manifest" href="manifest.webmanifest">
@@ -138,18 +139,19 @@
 
 <body>
     <div style="height: 100vh; width: 100vw;display: flex;justify-content: center;align-items: center;background-color: white;">
-        <h1><button id="stretch" class="stretch">stretch</button></h1>
+        <h1>
+            <amp-script layout="container" script="app" sandbox="allow-forms">
+                <button id="stretch" class="stretch">stretch</button>
+            </amp-script>
+        </h1>
     </div>
-    <amp-script layout="container" script="app" class="customjs">
-    </amp-script>
     <script id="app" type="text/plain" target="amp-script">
-        var currentAnimationsCounter = []; if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/stretch/sw.js', { scope: '/stretch/' }).then(function(reg) { // registration worked console.log('Registration succeeded. Scope is ' + reg.scope);
-        }).catch(function(error) { // registration failed console.log('Registration failed with ' + error); }); }; const stretchTitle = document.getElementById('stretch'); stretchTitle.addEventListener('animationend', function() { if (currentAnimationsCounter.includes('animatedActive'))
+        var currentAnimationsCounter = []; const button = document.getElementById('stretch'); button.addEventListener('click', () => { var stretchTitle = document.getElementById('stretch'); stretchTitle.addEventListener('animationend', function () { if (currentAnimationsCounter.includes('animatedActive'))
         { currentAnimationsCounter[currentAnimationsCounter.indexOf('animatedActive')] = undefined; stretchTitle.classList.remove('animatedActive'); } if (currentAnimationsCounter.includes('animatedHover')) { currentAnimationsCounter[currentAnimationsCounter.indexOf('animatedHover')]
-        = undefined; stretchTitle.classList.remove('animatedHover'); } }); stretchTitle.addEventListener('mousedown', function() { if (!currentAnimationsCounter.includes('animatedActive')) { currentAnimationsCounter.push('animatedActive'); stretchTitle.classList.add('animatedActive')
-        } }) stretchTitle.addEventListener('mouseenter', function() { if (!currentAnimationsCounter.includes('animatedHover')) { currentAnimationsCounter.push('animatedHover'); stretchTitle.classList.add('animatedHover') } })
+        = undefined; stretchTitle.classList.remove('animatedHover'); } }); stretchTitle.addEventListener('mousedown', function () { if (!currentAnimationsCounter.includes('animatedActive')) { currentAnimationsCounter.push('animatedActive'); stretchTitle.classList.add('animatedActive')
+        } }); stretchTitle.addEventListener('mouseenter', function () { if (!currentAnimationsCounter.includes('animatedHover')) { currentAnimationsCounter.push('animatedHover'); stretchTitle.classList.add('animatedHover') } }); })
     </script>
-    <amp-install-serviceworker src="sw.js" layout="nodisplay">
+    <amp-install-serviceworker src="/stretch/sw.js" data-iframe-src="install-sw.html" layout="nodisplay">
     </amp-install-serviceworker>
 </body>
 
